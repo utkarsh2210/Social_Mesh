@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { clearAuthState, editUser } from '../actions/auth';
 
 class Settings extends Component {
   constructor(props) {
@@ -17,8 +18,25 @@ class Settings extends Component {
       [fieldName]: val,
     });
   };
-  render() {
+
+  handleSave = () => {
+    const { password, confirmPassword, name } = this.state;
     const { user } = this.props.auth;
+
+    if (password !== confirmPassword) {
+      window.alert('Password & Confirm Password Do Not Match !');
+      return;
+    }
+
+    this.props.dispatch(editUser(name, password, confirmPassword, user._id));
+  };
+
+  componentWillMount() {
+    this.props.dispatch(clearAuthState());
+  }
+
+  render() {
+    const { user, error } = this.props.auth;
     const { editMode } = this.state;
     return (
       <div className="settings">
@@ -28,7 +46,10 @@ class Settings extends Component {
             alt="user-dp"
           />
         </div>
-
+        {error && <div className="alert error-dialog">{error}</div>}
+        {error === false && (
+          <div className="alert success-dialog">Successfully Updated!</div>
+        )}
         <div className="field">
           <div className="field-label">Email</div>
           <div className="field-value">{user.email}</div>
@@ -74,7 +95,9 @@ class Settings extends Component {
 
         <div className="btn-grp">
           {editMode ? (
-            <button className="button save-btn">Save</button>
+            <button className="button save-btn" onClick={this.handleSave}>
+              Save
+            </button>
           ) : (
             <button
               className="button edit-btn"
