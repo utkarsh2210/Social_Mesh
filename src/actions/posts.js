@@ -3,7 +3,7 @@ import { UPDATE_POSTS } from './actionTypes';
 
 export function fetchPosts() {
   return (dispatch) => {
-    const url = APIUrls.fetchPosts;
+    const url = APIUrls.fetchPosts();
     fetch(url)
       .then((response) => {
         return response.json();
