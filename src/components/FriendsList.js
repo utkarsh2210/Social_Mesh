@@ -2,6 +2,7 @@ import React from 'react';
 import { FriendsListItem } from './';
 
 const FriendsList = (props) => {
+  console.log('Friendslist', props);
   return (
     <div className="friends-list">
       <div className="header">Friends</div>

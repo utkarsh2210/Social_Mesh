@@ -8,4 +8,8 @@ export const APIUrls = {
     `http://codeial.com:8000/api/v2/posts?page=${page}&limit=${limit}`,
   userProfile: (userId) => `${API_ROOT}/users/${userId}`,
   userFriends: () => `${API_ROOT}/friendship/fetch_user_friends`,
+  addFriend: (userId) =>
+    `${API_ROOT}/friendship/create_friendship?user_id=${userId}`,
+  removeFriend: (userId) =>
+    `${API_ROOT}/friendship/remove_friendship?user_id=${userId}`,
 };
