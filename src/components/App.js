@@ -13,6 +13,7 @@ import { fetchPosts } from '../actions/posts';
 import { Navbar, Home, Page404, Login, Signup, Settings } from './';
 import { authenticateUser } from '../actions/auth';
 import { getAuthTokenFromLocalStorage } from '../helpers/utils';
+import UserProfile from './UserProfile';
 
 const PrivateRoute = (PrivateRouteProps) => {
   const { isLoggedin, path, component: Component } = PrivateRouteProps;
