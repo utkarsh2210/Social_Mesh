@@ -10,10 +10,8 @@ import PropTypes from 'prop-types';
 import jwt_decode from 'jwt-decode';
 
 import { fetchPosts } from '../actions/posts';
-import { Navbar, Home, Page404, Login, Signup } from './';
+import { Navbar, Home, Page404, Login, Signup, Settings } from './';
 import { authenticateUser } from '../actions/auth';
-
-const Settings = () => <div>Setting</div>;
 
 const PrivateRoute = (PrivateRouteProps) => {
   const { isLoggedin, path, component: Component } = PrivateRouteProps;
