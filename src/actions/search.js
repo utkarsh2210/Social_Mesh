@@ -7,12 +7,11 @@ import { getAuthTokenFromLocalStorage } from '../helpers/utils';
 import { APIUrls } from '../helpers/urls';
 
 export function searchUsers(searchText) {
-  dispatch(searchResultsStart());
   return (dispatch) => {
+    dispatch(searchResultsStart());
     const url = APIUrls.userSearch(searchText);
 
     fetch(url, {
-      method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
         Authorization: `Bearer ${getAuthTokenFromLocalStorage()}`,

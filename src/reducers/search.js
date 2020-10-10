@@ -1,4 +1,5 @@
 import {
+  FETCH_SEARCH_RESULTS_FAILURE,
   FETCH_SEARCH_RESULTS_START,
   FETCH_SEARCH_RESULTS_SUCCESS,
 } from '../actions/actionTypes';
@@ -10,7 +11,7 @@ const initialSearchState = {
   success: null,
 };
 
-export default function search(state = initalSearchState, action) {
+export default function search(state = initialSearchState, action) {
   switch (action.type) {
     case FETCH_SEARCH_RESULTS_START:
       return {
